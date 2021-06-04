@@ -1,0 +1,353 @@
+	--[[Genocider Script by rrreached and Quantum
+	https://www.roblox.com/catalog/5075254770/Front-Type-37-Pulse-Rifle
+	https://www.roblox.com/catalog/4933294084/Type-37-Pulse-Rifle
+	
+	-gh 4933294084,5075254770
+	--]]
+	
+		plr = game.Players.LocalPlayer
+	
+		char = plr.Character
+	
+		mouse = plr:GetMouse()
+	
+		gun = char["Black Type-37 Pulse Rifle"]
+		ghandle = gun.Handle
+		ghandle.AccessoryWeld:Destroy()
+	
+		gun2 = char["Type-37 Front"]
+		ghandle2 = gun2.Handle
+		ghandle2.AccessoryWeld:Destroy()
+	
+		rarm = char["Right Arm"]
+		larm = char["Left Arm"]
+		torso = char.Torso
+		head = char.Head
+	
+		torso["Right Shoulder"]:Destroy()
+		torso["Left Shoulder"]:Destroy()
+	
+		larm.LeftShoulderAttachment:Destroy()
+		rarm.RightShoulderAttachment:Destroy()
+	
+	
+		l = Instance.new("Attachment",larm)
+		l.Rotation = Vector3.new(-50, 0, 0)
+		l.Position = Vector3.new(-1.5,.5,1)
+	
+		r = Instance.new("Attachment",rarm)
+		r.Rotation = Vector3.new(-50, 0, 0)
+		r.Position = Vector3.new(1.5,.5,1)
+	
+		hed = Instance.new("Attachment", head)
+		hed.Rotation = Vector3.new(0,0,0)
+		hed.Position = Vector3.new(0,0,0)
+	
+		t = Instance.new("Attachment",torso)
+		--rarm
+		rap = Instance.new("AlignPosition",rarm)
+		rap.Attachment0 = r
+		rap.Attachment1 = t
+		rap.RigidityEnabled = true
+	
+		rao = Instance.new("AlignOrientation",rarm)
+		rao.Attachment0 = r
+		rao.Attachment1 = t
+		rao.RigidityEnabled = true
+	
+		--larm
+	
+		lap = Instance.new("AlignPosition",larm)
+		lap.Attachment0 = l
+		lap.Attachment1 = t
+		lap.RigidityEnabled = true
+	
+		lao = Instance.new("AlignOrientation",larm)
+		lao.Attachment0 = l
+		lao.Attachment1 = t
+		lao.RigidityEnabled = true
+		--head
+		hedp = Instance.new("AlignPosition",head)
+		hedp.Attachment0 = hed
+		hedp.Attachment1 = t
+		hedp.RigidityEnabled = true
+	
+		hedo = Instance.new("AlignOrientation",head)
+		hedo.Attachment0 = hed
+		hedo.Attachment1 = t
+		hedo.RigidityEnabled = true
+		-- gun1 (Back Gun/Left hand)
+	
+		h = Instance.new("Attachment",ghandle)
+		h.Rotation = Vector3.new(-90,130,90)
+		h.Position = Vector3.new(1.2,1.2,0)
+	
+		lg = Instance.new("Attachment",larm)
+		lg.Rotation = Vector3.new(0,0,0)
+		lg.Position = Vector3.new(0,0,0)
+	
+		gap = Instance.new("AlignPosition",ghandle)
+		gap.Attachment0 = h
+		gap.Attachment1 = lg
+		gap.RigidityEnabled = true
+	
+		gao = Instance.new("AlignOrientation",ghandle)
+		gao.Attachment0 = h
+		gao.Attachment1 = lg
+		gao.RigidityEnabled = true
+		-- gun2 (Front Gun/Right Hand)
+	
+		h2 = Instance.new("Attachment",ghandle2)
+		h2.Rotation = Vector3.new(-90,130,90)
+		h2.Position = Vector3.new(1.2,1.2,0)
+	
+		lg2 = Instance.new("Attachment",rarm)
+		lg2.Rotation = Vector3.new(0,0,0)
+		lg2.Position = Vector3.new(0,0,0)
+	
+		gap2 = Instance.new("AlignPosition",ghandle2)
+		gap2.Attachment0 = h2
+		gap2.Attachment1 = lg2
+		gap2.RigidityEnabled = true
+	
+		gao2 = Instance.new("AlignOrientation",ghandle2)
+		gao2.Attachment0 = h2
+		gao2.Attachment1 = lg2
+		gao2.RigidityEnabled = true
+	
+		local pew=false
+		mouse.Button1Down:Connect(function()
+			pew=true
+		end)
+		mouse.Button1Up:Connect(function()
+			pew=false
+		end)
+	
+	
+		sine=0
+	
+		function lerp(yes,cf)
+			local more=0
+			return yes:lerp(cf,(.4))
+		end
+	
+	
+		local val=90
+		game:service"RunService".RenderStepped:connect(function()
+			sine=sine+2
+			val=val+15
+			tick=sine
+			if not pew then
+				h.Rotation=Vector3.new(-90,130,90)
+				h2.Rotation=Vector3.new(-90,130,90)
+				r.Rotation = lerp(r.Rotation,Vector3.new(-180,math.cos(time()*4)*8,math.sin(time()*4)*4))
+				r.Position = lerp(r.Position,Vector3.new(1.5,1.3+math.cos(time()*12)/4,0))  
+				l.Rotation = lerp(l.Rotation,Vector3.new(-50-math.sin(time()*2)*13, 0, 0))
+				l.Position = lerp(l.Position,Vector3.new(-1.5,.1,.31-math.cos(time()*2)/4))  
+			else
+				r.Rotation = lerp(r.Rotation,Vector3.new(-90-(math.sin(tick*10))*10, 0, 0))
+				r.Position = lerp(r.Position,Vector3.new(1.5,1-(math.cos(tick*10))/1.5,.5))  
+				l.Rotation = lerp(l.Rotation,Vector3.new(-90+(math.sin(tick*10))*10, 0, 0))
+				l.Position = lerp(l.Position,Vector3.new(-1.5,1+(math.cos(tick*10))/1.5,0.5))          
+			end
+		end)
+	
+	
+		plr = game.Players.LocalPlayer
+		dead = false
+		char = plr.Character
+	
+	
+	
+	
+		bull = char["StrawHat"]
+		bhandle = bull.Handle
+		bhandle.Mesh:Destroy()
+		bhandle.Transparency = 0.5
+		sel = Instance.new("SelectionBox", bhandle)
+		sel.Adornee = bhandle
+		sel.Color3 = Color3.fromRGB(255,0,0)
+		wait()
+		bull.Parent = workspace
+	
+		mouse = plr:GetMouse()
+		head = char.Head
+		camera = workspace.CurrentCamera
+		lt = true
+		ltt = false
+	
+		local function IsFirstPerson()
+			return (head.CFrame.p - camera.CFrame.p).Magnitude < 1
+		end
+	
+		bbv = Instance.new("BodyVelocity",bhandle)
+	
+	
+	
+	
+	
+		mouse.Button1Down:Connect(function()
+	
+			if dead == false then
+				lt = false
+				ltt = true
+	
+	
+	
+				ltt = false
+				bbav = Instance.new("BodyAngularVelocity",bhandle)
+				bbav.MaxTorque = Vector3.new(math.huge,math.huge,math.huge)
+				bbav.P = 1000000000000000
+				bbav.AngularVelocity = Vector3.new(1000000000000000,1000000000000000,1000000000000000)
+				if game.Players:GetPlayerFromCharacter(mouse.Target.Parent) then
+					repeat 
+						game:GetService("RunService").RenderStepped:Wait()
+						bhandle.Position = mouse.Target.Parent.HumanoidRootPart.CFrame.p
+						wait(0.5)
+					until char.Humanoid.Health == 100 or char.Humanoid.Health == 0
+				elseif game.Players:GetPlayerFromCharacter(mouse.Target.Parent.Parent) then
+					repeat 
+						game:GetService("RunService").RenderStepped:Wait()
+						bhandle.Position = mouse.Target.Parent.Parent.HumanoidRootPart.CFrame.p
+						wait(0.5)
+					until char.Humanoid.Health == 100 or char.Humanoid.Health == 0
+	
+				else
+					repeat 
+						game:GetService("RunService").RenderStepped:Wait()
+						bhandle.Position = mouse.Hit.p
+						wait(0.5)
+					until char.Humanoid.Health == 100 or char.Humanoid.Health == 0
+				end
+				wait()
+				lt = true
+			end
+		end)
+	
+		char.Humanoid.Died:Connect(function()
+			dead = true
+		end)
+		repeat 
+			game:GetService("RunService").RenderStepped:Wait()
+			if dead == false and bhandle.CanCollide == true then
+				bhandle.CanCollide = false
+			end
+			if lt == true and dead == false then
+				bhandle.CFrame = char.Head.CFrame + Vector3.new(0,-15,0)
+			elseif ltt == true and dead == false then
+				bhandle.CFrame = ghandle.CFrame * CFrame.new(-1.7,-2,0)
+				bhandle.Rotation = char.HumanoidRootPart.Rotation
+			end
+		until char.Humanoid.Health == 0
+	
+	
+	end)
+end
+coroutine.wrap(GVXK_fake_script)()
+local function EJTTGGQ_fake_script() -- Dagger.LocalScript 
+	local script = Instance.new('LocalScript', Dagger)
+
+	script.Parent.MouseButton1Click:Connect(function()
+	
+		plr = game.Players.LocalPlayer 
+		char = plr.Character
+		mouse = plr:GetMouse()
+	
+		char.Animate:Remove()
+	
+		dag = char["Hussar SabreAccessory"]
+		dag.Name = "Fire"
+	
+		char["Fire"].Handle.AccessoryWeld:Destroy() 
+	
+		att0 = Instance.new("Attachment",char["Fire"].Handle) 
+		att0.Orientation = Vector3.new(0,0,0)
+		att0.Position = Vector3.new(0,1,-1.5) 
+	
+		att1 = Instance.new("Attachment",char["Right Arm"]) 
+	
+		ap = Instance.new("AlignPosition",char["Fire"].Handle) 
+		ap.Attachment0 = att0
+		ap.Attachment1 = att1
+		ap.RigidityEnabled = true 
+		ao = Instance.new("AlignOrientation",char["Fire"].Handle) 
+		ao.Attachment0 = att0
+		ao.Attachment1 = att1
+		ao.RigidityEnabled = true
+	
+		local Char=game.Players.LocalPlayer.Character
+		local Humanoid = game.Players.LocalPlayer.Character.Humanoid
+		local Torso=Char.Torso
+		local RightShoulder=Torso['Right Shoulder'] -- Right arm
+		local RightShoulderOrigin=RightShoulder.C0
+		local LeftShoulder=Torso['Left Shoulder'] -- Left arm
+		local LeftShoulderOrigin=LeftShoulder.C0
+		local RightHip=Torso['Right Hip'] -- Right leg
+		local RightHipOrigin=RightHip.C0
+		local LeftHip=Torso['Left Hip'] -- Left leg
+		local LeftHipOrigin=LeftHip.C0
+		local RootJoint=Char.HumanoidRootPart.RootJoint -- Torso
+		local RootJointOrigin=RootJoint.C0
+		local ATTACK = false
+		local RootPart = Char.HumanoidRootPart
+		local VT = Vector3.new
+		local mouse = game.Players.LocalPlayer:GetMouse()
+	
+		pcall(function()
+			Char.Animate:Destroy()
+		end)
+		for i,v in pairs(Humanoid:GetPlayingAnimationTracks()) do
+			v:Stop()
+		end
+	
+		function swait()
+			game:GetService('RunService').Heartbeat:wait()
+		end
+		Humanoid.WalkSpeed = 23
+	
+		local function slice()
+			for i = 0, 5, 0.2 / 0.5 do
+				swait()
+				RightShoulder.C0=RightShoulder.C0:Lerp(RightShoulderOrigin*CFrame.new(0,0,0)*CFrame.Angles(math.rad(-50),0,math.rad(-10)),0.1)
+				LeftShoulder.C0=LeftShoulder.C0:Lerp(LeftShoulderOrigin*CFrame.new(0,0,0)*CFrame.Angles(math.rad(-25),math.rad(10),math.rad(-20)),0.1)
+				RightHip.C0=RightHip.C0:Lerp(RightHipOrigin*CFrame.new(.5,1,0)*CFrame.Angles(0,math.rad(-10),0),0.1)
+				LeftHip.C0=LeftHip.C0:Lerp(LeftHipOrigin*CFrame.new(0,0,0)*CFrame.Angles(0,0,math.rad(20)),0.1)
+				RootJoint.C0=RootJoint.C0:Lerp(RootJointOrigin*CFrame.new(0,0,0)*CFrame.Angles(0,0,math.rad(-35)),0.1)
+			end
+			for i = 0, 15, 0.2 / 0.5 do
+				swait()
+				RightShoulder.C0=RightShoulder.C0:Lerp(RightShoulderOrigin*CFrame.new(1,0,0)*CFrame.Angles(math.rad(-40),math.rad(10),math.rad(160)),0.1)
+				LeftShoulder.C0=LeftShoulder.C0:Lerp(LeftShoulderOrigin*CFrame.new(0,0,0)*CFrame.Angles(math.rad(-30),math.rad(10),math.rad(50)),0.1)
+				RightHip.C0=RightHip.C0:Lerp(RightHipOrigin*CFrame.new(0,0,0)*CFrame.Angles(0,0,0),0.1)
+				LeftHip.C0=LeftHip.C0:Lerp(LeftHipOrigin*CFrame.new(0,0,0)*CFrame.Angles(0,0,math.rad(20)),0.1)
+				RootJoint.C0=RootJoint.C0:Lerp(RootJointOrigin*CFrame.new(0,0,0)*CFrame.Angles(0,0,0),0.1)
+			end
+		end
+	
+		mouse.Button1Down:connect(function()
+			if ATTACK == false then
+				ATTACK = true
+				slice()
+				ATTACK = false
+			end
+		end)
+	
+		while Humanoid.Health > 0 do
+			swait()
+			local TORSOVELOCITY = (RootPart.Velocity * VT(1, 0, 1)).magnitude
+			local TORSOVERTICALVELOCITY = RootPart.Velocity.y
+			if TORSOVELOCITY > 1 and ATTACK == false then -- walk anim
+				RightShoulder.C0=RightShoulder.C0:Lerp(RightShoulderOrigin*CFrame.new(0,0,0)*CFrame.Angles(math.rad(-12),math.rad(-10),math.rad(-25)-math.sin(tick()*10)/9),0.1)
+				LeftShoulder.C0=LeftShoulder.C0:Lerp(LeftShoulderOrigin*CFrame.new(0,0,0)*CFrame.Angles(math.rad(-12),math.rad(10),math.rad(25)-math.sin(tick()*10)/9),0.1)
+				RightHip.C0=RightHip.C0:Lerp(RightHipOrigin*CFrame.new(0,math.sin(tick()*5)/4,0)*CFrame.Angles(math.rad(-2),0,math.sin(tick()*8)/1),0.1)
+				LeftHip.C0=LeftHip.C0:Lerp(LeftHipOrigin*CFrame.new(0,math.sin(tick()*5)/4,0)*CFrame.Angles(math.rad(-2),0,math.sin(tick()*8)/1),0.1)
+				RootJoint.C0=RootJoint.C0:Lerp(RootJointOrigin*CFrame.new(0,0,0.05-math.sin(tick()*5)/4)*CFrame.Angles(math.rad(20),0,0),0.1)
+			elseif TORSOVELOCITY < 1 and ATTACK == false then -- no walk
+				RightShoulder.C0=RightShoulder.C0:Lerp(RightShoulderOrigin*CFrame.new(0,0,0)*CFrame.Angles(math.rad(-10),math.rad(-20),math.sin(tick()*4)/3.5),0.1)
+				LeftShoulder.C0=LeftShoulder.C0:Lerp(LeftShoulderOrigin*CFrame.new(0,0,0)*CFrame.Angles(math.rad(-10),math.rad(10),math.sin(tick()*2)/4),0.1)
+				RightHip.C0=RightHip.C0:Lerp(RightHipOrigin*CFrame.new(0,math.sin(tick()*5)/4,0)*CFrame.Angles(math.rad(-10),math.rad(-10),0),0.1)
+				LeftHip.C0=LeftHip.C0:Lerp(LeftHipOrigin*CFrame.new(0,math.sin(tick()*5)/4,0)*CFrame.Angles(math.rad(-10),math.rad(10),0),0.1)
+				RootJoint.C0=RootJoint.C0:Lerp(RootJointOrigin*CFrame.new(0,0,0.05-math.sin(tick()*5)/4)*CFrame.Angles(0,0,0),0.1)
+			end
+			
+			end
