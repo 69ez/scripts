@@ -5,7 +5,7 @@
 --||              ABYSS EYE BY SHACKLUSTER
 --====================================================//--
 
-local ToolName = "MeshPartAccessory"
+local ToolName = "BladeMasterAccessory"
 
 Player = game:GetService("Players").LocalPlayer
 PlayerGui = Player.PlayerGui
