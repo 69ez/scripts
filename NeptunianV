@@ -5517,16 +5517,16 @@ tl1.Enabled = false
 local mainpart = CreateParta(m,1,0,"SmoothPlastic",BrickColor.Random())
 local mwingweld = CreateWeld(mainpart,tors,mainpart,0,-0.5,-0.75,math.rad(0),math.rad(0),math.rad(0),0,0,0,math.rad(0),math.rad(0),math.rad(0))
 
-local wng1a = CreateParta(m,1,0,"Neon",BrickColor.new("Alder"))
+local wng1a = CreateParta(m,1,0,"Neon",BrickColor.new("White"))
 CreateMesh(wng1a,"Wedge",0.1,4,4)
 CreateWeld(wng1a,mainpart,wng1a,0,-2,-2.5,math.rad(0),math.rad(70),math.rad(5),0,0,0,math.rad(0),math.rad(0),math.rad(0))
-local wng2a = CreateParta(m,1,0,"Neon",BrickColor.new("Alder"))
+local wng2a = CreateParta(m,1,0,"Neon",BrickColor.new("White"))
 CreateMesh(wng2a,"Wedge",0.1,4,4)
 CreateWeld(wng2a,mainpart,wng2a,0,-2,-2.5,math.rad(0),math.rad(-70),math.rad(-5),0,0,0,math.rad(0),math.rad(0),math.rad(0))
-local wng1b = CreateParta(m,1,0,"Neon",BrickColor.new("Alder"))
+local wng1b = CreateParta(m,1,0,"Neon",BrickColor.new("White"))
 CreateMesh(wng1b,"Wedge",0.1,1.5,3)
 CreateWeld(wng1b,mainpart,wng1b,0,-1,-2.25,math.rad(180),math.rad(-110),math.rad(-5),0,0,0,math.rad(0),math.rad(0),math.rad(0))
-local wng2b = CreateParta(m,1,0,"Neon",BrickColor.new("Alder"))
+local wng2b = CreateParta(m,1,0,"Neon",BrickColor.new("White"))
 CreateMesh(wng2b,"Wedge",0.1,1.5,3)
 CreateWeld(wng2b,mainpart,wng2b,0,-1,-2.25,math.rad(180),math.rad(110),math.rad(5),0,0,0,math.rad(0),math.rad(0),math.rad(0))
 ------
@@ -7005,7 +7005,7 @@ end
 OverCut = true
 local orb = Instance.new("Part", char)
 orb.Anchored = true
-orb.BrickColor = BrickColor.new("Toothpaste")
+orb.BrickColor = BrickColor.new("Cyan")
 orb.CanCollide = false
 orb.FormFactor = 3
 orb.Name = "Ring"
