@@ -5506,7 +5506,7 @@ tl1.Attachment1 = A1
 tl1.Texture = "http://www.roblox.com/asset/?id=1978704853"
 tl1.LightEmission = 1
 tl1.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0),NumberSequenceKeypoint.new(1, 1)})
-tl1.Color = ColorSequence.new(BrickColor.new('Royal purple').Color)
+tl1.Color = ColorSequence.new(BrickColor.new('White').Color)
 tl1.Lifetime = 0.6
 tl1.Enabled = false
 
