@@ -16,7 +16,7 @@ print("Space near a wall to walljump, away from a wall homing attack")
 
 wait(0.07)
 Player=game:GetService("Players").LocalPlayer
-Character=Player.Character.Dummy
+Character=Player.Character
 PlayerGui=Player.PlayerGui
 Backpack=Player.Backpack
 Torso=Character.Torso
