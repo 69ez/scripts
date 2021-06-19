@@ -20,7 +20,7 @@ loadstring(game:GetObjects("rbxassetid://5209815302")[1].Source)()
 --The reality of my life isn't real but a Universe -makhail07
 wait()
 local Player = game.Players.localPlayer
-Character=Player.Character.Dummy
+Character=Player.Character
 local plr = game:service'Players'.LocalPlayer
 local Humanoid = Character.Humanoid
 local char = Character
