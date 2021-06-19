@@ -20,7 +20,7 @@ K = Runnin' in the 90's
 --#makeoldscriptsgreatagain--
 
 Player=game.Players.LocalPlayer
-Character=Player.Character.Dummy
+Character=Player.Character
 hum = Character.Humanoid
 LeftArm=Character["Left Arm"]
 LeftLeg=Character["Left Leg"]
